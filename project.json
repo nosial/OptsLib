@@ -15,7 +15,7 @@
     },
     "build": {
         "source_path": "src",
-        "default_configuration": "debug",
+        "default_configuration": "release",
         "define_constants": {
             "ASSEMBLY_NAME": "%ASSEMBLY.NAME%",
             "ASSEMBLY_PACKAGE": "%ASSEMBLY.PACKAGE%",
