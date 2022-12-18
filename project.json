@@ -6,7 +6,7 @@
             "maximum_version": "8.2"
         },
         "update_source": {
-            "source": "nosial/libs.opts=latest@n64",
+            "source": "nosial/libs.opts@n64",
             "repository": {
                 "name": "n64",
                 "type": "gitlab",
