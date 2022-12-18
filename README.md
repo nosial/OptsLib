@@ -57,9 +57,10 @@ file's dependencies, for instance:
 
 ```json
 {
-  "dependencies": {
-    "net.nosial.optslib": "nosial/libs.opts=latest@n64"
-  }
+  "name": "net.nosial.optslib",
+  "version": "1.0.0",
+  "source_type": "remote",
+  "source": "nosial/libs.opts=1.0.0@n64"
 }
 ```
 
