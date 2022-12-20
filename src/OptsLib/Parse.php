@@ -87,6 +87,7 @@
          */
         public static function getArguments(): array
         {
+            global $argv;
             if(self::$ArgsCache == null)
             {
                 if(isset($argv))
