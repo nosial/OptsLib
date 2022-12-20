@@ -3,6 +3,33 @@
 A very simple Options parser and command-line arguments
 handling library for PHP.
 
+## Installation
+
+The library can be installed using ncc:
+
+```bash
+ncc install -p "nosial/libs.opts=latest@n64"
+```
+
+or by adding the following to your project.json file under
+the `build.dependencies` section:
+
+```json
+{
+  "name": "net.nosial.optslib",
+  "version": "latest",
+  "source_type": "remote",
+  "source": "nosial/libs.opts=latest@n64"
+}
+```
+
+If you don't have the n64 source configured you can add it
+by running the following command:
+
+```bash
+ncc source add --name n64 --type gitlab --host git.n64.cc
+```
+
 ## Usage
 
 The usage of this library is very simple, there are
@@ -45,54 +72,6 @@ if it's not set, an empty array is returned.
     echo $arguments['output-file']; // "test.txt"
     echo $arguments['input-file']; // "test.txt"
     echo $arguments['log']; // "verbose"
-```
-
-
-## building
-
-In order to use this library you need to install it
-via `ncc`, this can be done using NCC's command-line
-interface or mentioning this library in your `package.json`
-file's dependencies, for instance:
-
-```json
-{
-  "name": "net.nosial.optslib",
-  "version": "1.0.0",
-  "source_type": "remote",
-  "source": "nosial/libs.opts=1.0.0@n64"
-}
-```
-
-If you don't have N64's repository added to your NCC
-configuration, you can add it using the following command:
-
-```bash
-$ sudo ncc source add --name n64 --type gitlab --host git.n64.cc
-```
-
-
-Building is done using [NCC](https://git.n64.cc/nosial/ncc), 
-you can build it using the following command:
-
-```bash
-$ git clone https://git.n64.cc/nosial/libs/optslib.git
-$ cd optlibs
-
-$ ncc build --config release
-# or
-$ make release
-```
-
-### installing
-
-Once you have built the library, you can install it using 
-the following command:
-
-```bash
-$ sudo ncc install -p="build/release/net.nosial.optslib.ncc"
-# or
-$ sudo make install
 ```
 
 ## License
