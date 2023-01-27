@@ -19,7 +19,7 @@
     "assembly": {
         "name": "OptsLib",
         "package": "net.nosial.optslib",
-        "copyright": "Copyright (c) 2022 Nosial",
+        "copyright": "Copyright (c) 2022-2023 Nosial",
         "description": "A simple options parser library for PHP",
         "version": "1.0.0",
         "uuid": "20aefdfa-7b91-11ed-919f-cb63712c8e36"
