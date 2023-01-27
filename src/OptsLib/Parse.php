@@ -12,7 +12,7 @@
      * Software.
      *
      * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-     * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+     * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
      * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
      * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      */
@@ -31,9 +31,9 @@
         /**
          * Parses the input arguments into an array of flags and values
          *
-         * @param $input
-         * @param int $max_arguments
-         * @return array
+         * @param string|array $input array The input arguments
+         * @param int $max_arguments The maximum number of arguments to parse
+         * @return array The parsed arguments
          */
         public static function parseArgument($input, int $max_arguments=1000): array
         {
@@ -100,9 +100,10 @@
         /**
          * Returns the arguments from the command line
          *
-         * @return array
+         * @param string|null $after Returns the arguments after the specified flag/argument
+         * @return array Returns the arguments from the command line
          */
-        public static function getArguments(): array
+        public static function getArguments(?string $after=null): array
         {
             global $argv;
             if(self::$ArgsCache == null)
@@ -117,6 +118,22 @@
                 }
             }
 
-            return self::$ArgsCache;
+            if($after == null)
+            {
+                return self::$ArgsCache;
+            }
+            else
+            {
+                $after_index = array_search($after, array_keys(self::$ArgsCache));
+
+                if($after_index === false)
+                {
+                    return [];
+                }
+                else
+                {
+                    return array_slice(self::$ArgsCache, $after_index + 1);
+                }
+            }
         }
     }
