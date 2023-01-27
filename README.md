@@ -1,4 +1,4 @@
-# ![OptsLib](assets/optslib-32px.png) OptsLib
+# OptsLib
 
 A very simple Options parser and command-line arguments
 handling library for PHP.
@@ -6,7 +6,7 @@ handling library for PHP.
 ## Table of Contents
 
 <!-- TOC -->
-* [![OptsLib](assets/optslib-32px.png) OptsLib](#-optslib)
+* [OptsLib](#optslib)
   * [Table of Contents](#table-of-contents)
   * [Installation](#installation)
   * [Compiling from source](#compiling-from-source)
