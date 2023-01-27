@@ -21,9 +21,16 @@
 
     class Parse
     {
+        /**
+         * The regex pattern to match options and arguments.
+         *
+         * @var string
+         */
         private static $Regex = "/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/";
 
         /**
+         * Cache of the parsed arguments. This is used to prevent the arguments from being parsed more than once.
+         *
          * @var array
          */
         private static $ArgsCache;
@@ -135,5 +142,33 @@
                     return array_slice(self::$ArgsCache, $after_index + 1);
                 }
             }
+        }
+
+        /**
+         * @return array
+         */
+        public static function getArgsCache(): array
+        {
+            return self::$ArgsCache;
+        }
+
+        /**
+         * Gets the current regex pattern used to parse the arguments.
+         *
+         * @return string
+         */
+        public static function getRegex(): string
+        {
+            return self::$Regex;
+        }
+
+        /**
+         * Sets a new regex pattern to use to parse the arguments.
+         *
+         * @param string $Regex
+         */
+        public static function setRegex(string $Regex): void
+        {
+            self::$Regex = $Regex;
         }
     }
