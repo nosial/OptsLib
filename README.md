@@ -6,7 +6,7 @@ handling library for PHP.
 ## Table of Contents
 
 <!-- TOC -->
-* [OptsLib](#optslib)
+* [![OptsLib](assets/optslib-32px.png) OptsLib](#-optslib)
   * [Table of Contents](#table-of-contents)
   * [Installation](#installation)
   * [Compiling from source](#compiling-from-source)
@@ -17,9 +17,10 @@ handling library for PHP.
     * [getRegex()](#getregex--)
     * [setRegex()](#setregex--)
     * [getArgsCache()](#getargscache--)
+  * [Changelog](#changelog)
   * [License](#license)
+  * [Logo](#logo)
   * [Contributing](#contributing)
-  * [Contact](#contact)
 <!-- TOC -->
 
 ## Installation
