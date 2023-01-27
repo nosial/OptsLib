@@ -1,4 +1,4 @@
-# OptsLib
+# ![OptsLib](assets/optslib-32px.png) OptsLib
 
 A very simple Options parser and command-line arguments
 handling library for PHP.
@@ -171,6 +171,11 @@ This method is used to return the arguments cache parsed from the global
 
 This library is licensed under the MIT license, see the LICENSE file
 for more information.
+
+## Logo
+
+The logo was created by [Boxicons](https://boxicons.com/) and is licensed
+under the [MIT license](assets/LICENSE)
 
 ## Contributing
 
