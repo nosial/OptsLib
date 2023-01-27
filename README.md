@@ -136,6 +136,9 @@ In this case, you can pass the `subcommand` argument to the
 
 ## Additional functionality
 
+OptsLib also provides some additional functionality that
+can be used to modify the way arguments are parsed.
+
 ### getRegex()
 
 This method is used to return the regex pattern used to parse
@@ -161,16 +164,23 @@ the arguments, you can modify the default pattern to suit your needs.
     \OptsLib\Parse::setRegex('/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/');
 ```
 
+
 ### getArgsCache()
 
 This method is used to return the arguments cache parsed from the global
 `$argv` variable, this can be used as a means of troubleshooting.
 
 
+## Changelog
+
+For a list of changes, see the [CHANGELOG.md](CHANGELOG.md) file.
+
+
 ## License
 
 This library is licensed under the MIT license, see the LICENSE file
 for more information.
+
 
 ## Logo
 
