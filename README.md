@@ -30,6 +30,20 @@ by running the following command:
 ncc source add --name n64 --type gitlab --host git.n64.cc
 ```
 
+## Compiling from source
+
+The library can be compiled from source using ncc:
+
+```bash
+ncc build --config release
+```
+
+or by running the following command:
+
+```bash
+make release
+```
+
 ## Usage
 
 The usage of this library is very simple, there are
@@ -72,6 +86,33 @@ if it's not set, an empty array is returned.
     echo $arguments['output-file']; // "test.txt"
     echo $arguments['input-file']; // "test.txt"
     echo $arguments['log']; // "verbose"
+```
+
+Optionally, if you want arguments after a specific argument/option
+to be parsed, you can pass the argument name as the first argument.
+
+This is ideal if you are using a command line tool that has
+a sub-command, for example:
+
+```bash
+$ mytool subcommand --foo --bar="test" -y --username test
+```
+
+In this case, you can pass the `subcommand` argument to the
+`getArguments()` method to parse the arguments after it.
+
+```php
+<?php
+
+    require_once('ncc');
+    import('net.nosial.optslib', 'latest');
+    
+    $arguments = \OptsLib\Parse::getArguments('subcommand');
+    
+    echo $arguments['foo']; // true
+    echo $arguments['bar']; // "test"
+    echo $arguments['y']; // true
+    echo $arguments['username']; // "test"
 ```
 
 ## License
