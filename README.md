@@ -3,6 +3,25 @@
 A very simple Options parser and command-line arguments
 handling library for PHP.
 
+## Table of Contents
+
+<!-- TOC -->
+* [OptsLib](#optslib)
+  * [Table of Contents](#table-of-contents)
+  * [Installation](#installation)
+  * [Compiling from source](#compiling-from-source)
+  * [Usage](#usage)
+    * [parseArgument()](#parseargument--)
+    * [getArguments()](#getarguments--)
+  * [Additional functionality](#additional-functionality)
+    * [getRegex()](#getregex--)
+    * [setRegex()](#setregex--)
+    * [getArgsCache()](#getargscache--)
+  * [License](#license)
+  * [Contributing](#contributing)
+  * [Contact](#contact)
+<!-- TOC -->
+
 ## Installation
 
 The library can be installed using ncc:
@@ -115,6 +134,39 @@ In this case, you can pass the `subcommand` argument to the
     echo $arguments['username']; // "test"
 ```
 
+## Additional functionality
+
+### getRegex()
+
+This method is used to return the regex pattern used to parse
+the arguments, it can be used to parse arguments manually.
+
+The default used is
+
+```regexp
+/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/
+```
+
+### setRegex()
+
+This method is used to set the regex pattern used to parse
+the arguments, you can modify the default pattern to suit your needs.
+
+```php
+<?php
+
+    require_once('ncc');
+    import('net.nosial.optslib', 'latest');
+    
+    \OptsLib\Parse::setRegex('/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/');
+```
+
+### getArgsCache()
+
+This method is used to return the arguments cache parsed from the global
+`$argv` variable, this can be used as a means of troubleshooting.
+
+
 ## License
 
 This library is licensed under the MIT license, see the LICENSE file
@@ -124,7 +176,3 @@ for more information.
 
 If you want to contribute to this project, you can do so by
 creating a merge request on the [GitLab repository](https://git.n64.cc/nosial/libs/optslib).
-
-## Contact
-
-If you have any questions, you can contact us on [Telegram](https://t.me/NosialDiscussions).
