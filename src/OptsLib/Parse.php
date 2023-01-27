@@ -145,6 +145,8 @@
         }
 
         /**
+         * Returns the cached arguments
+         *
          * @return array
          */
         public static function getArgsCache(): array
