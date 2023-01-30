@@ -27,12 +27,6 @@
     "build": {
         "source_path": "src",
         "default_configuration": "release",
-        "define_constants": {
-            "ASSEMBLY_NAME": "%ASSEMBLY.NAME%",
-            "ASSEMBLY_PACKAGE": "%ASSEMBLY.PACKAGE%",
-            "ASSEMBLY_VERSION": "%ASSEMBLY.VERSION%",
-            "ASSEMBLY_UID": "%ASSEMBLY.UID%"
-        },
         "configurations": [
             {
                 "name": "release",
