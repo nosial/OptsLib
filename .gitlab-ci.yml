@@ -20,7 +20,7 @@ before_script:
     - git clone https://git.n64.cc/nosial/ncc.git
     - cd ncc
     - make redist
-    - build/src/INSTALL --auto --install-composer
+    - php build/src/INSTALL --auto --install-composer
 
 build:
     script:
