@@ -1,7 +1,6 @@
 # OptsLib
 
-A very simple Options parser and command-line arguments
-handling library for PHP.
+A basic Options parser and command-line arguments handling a library for PHP.
 
 ## Table of Contents
 
