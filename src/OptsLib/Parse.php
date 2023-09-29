@@ -26,14 +26,14 @@
          *
          * @var string
          */
-        private static $Regex = "/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/";
+        private static $regex = "/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/";
 
         /**
          * Cache of the parsed arguments. This is used to prevent the arguments from being parsed more than once.
          *
          * @var array
          */
-        private static $ArgsCache;
+        private static $args_cache;
 
         /**
          * Parses the input arguments into an array of flags and values
@@ -63,42 +63,43 @@
             }
 
             $configs = array();
-            preg_match_all(self::$Regex, $flags, $matches, PREG_SET_ORDER);
+            preg_match_all(self::$regex, $flags, $matches, PREG_SET_ORDER);
 
             foreach ($matches as $index => $match)
             {
-                if (isset($match['value']) && $match['value'] !== '')
+                if(isset($match['value']) && $match['value'] !== '')
                 {
                     $value = $match['value'];
                 }
-                else if (isset($match['string']) && $match['string'] !== '')
+                elseif(isset($match['string']) && $match['string'] !== '')
                 {
                     // fix escaped quotes
-                    $value = str_replace("\\\"", "\"", $match['string']);
-                    $value = str_replace("\\'", "'", $value);
+                    $value = str_replace(["\\\"", "\\'"], ["\"", "'"], $match['string']);
                 }
                 else
                 {
                     $value = true;
                 }
 
-                if (isset($match['bigflag']) && $match['bigflag'] !== '')
+                if(isset($match['bigflag']) && $match['bigflag'] !== '')
                 {
                     $configs[$match['bigflag']] = $value;
                 }
 
-                if (isset($match['smallflag']) && $match['smallflag'] !== '')
+                if(isset($match['smallflag']) && $match['smallflag'] !== '')
                 {
                     $configs[$match['smallflag']] = $value;
                 }
 
-                if (isset($match['unmatched']) && $match['unmatched'] !== '')
+                if(isset($match['unmatched']) && $match['unmatched'] !== '')
                 {
                     $configs[$match['unmatched']] = true;
                 }
 
-                if ($index >= $max_arguments)
+                if($index >= $max_arguments)
+                {
                     break;
+                }
             }
 
             return $configs;
@@ -113,45 +114,37 @@
         public static function getArguments(?string $after=null): array
         {
             global $argv;
-            if(self::$ArgsCache == null)
+
+            if($argv === null)
+            {
+                $argv = $_SERVER['argv'];
+            }
+
+            if(self::$args_cache === null)
             {
                 if(isset($argv))
                 {
-                    self::$ArgsCache = self::parseArgument($argv);
+                    self::$args_cache = self::parseArgument($argv);
                 }
                 else
                 {
-                    self::$ArgsCache = [];
+                    self::$args_cache = [];
                 }
             }
 
-            if($after == null)
+            if($after === null)
             {
-                return self::$ArgsCache;
+                return self::$args_cache;
             }
-            else
+
+            $after_index = array_search($after, array_keys(self::$args_cache), true);
+
+            if($after_index === false)
             {
-                $after_index = array_search($after, array_keys(self::$ArgsCache));
-
-                if($after_index === false)
-                {
-                    return [];
-                }
-                else
-                {
-                    return array_slice(self::$ArgsCache, $after_index + 1);
-                }
+                return [];
             }
-        }
 
-        /**
-         * Returns the cached arguments
-         *
-         * @return array
-         */
-        public static function getArgsCache(): array
-        {
-            return self::$ArgsCache;
+            return array_slice(self::$args_cache, $after_index + 1);
         }
 
         /**
@@ -161,16 +154,16 @@
          */
         public static function getRegex(): string
         {
-            return self::$Regex;
+            return self::$regex;
         }
 
         /**
          * Sets a new regex pattern to use to parse the arguments.
          *
-         * @param string $Regex
+         * @param string $regex
          */
-        public static function setRegex(string $Regex): void
+        public static function setRegex(string $regex): void
         {
-            self::$Regex = $Regex;
+            self::$regex = $regex;
         }
     }
