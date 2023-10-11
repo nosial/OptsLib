@@ -22,4 +22,4 @@ publish:
     script:
         - |
             curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/release/net.nosial.optslib.ncc \
-              "$https://$CI_SERVER_HOST/api/v4/projects/$CI_PROJECT_ID/packages/generic/${PACKAGE_NAME}/${CI_COMMIT_SHA}/net.nosial.optslib.ncc"
+              "https://$CI_SERVER_HOST/api/v4/projects/$CI_PROJECT_ID/packages/generic/${PACKAGE_NAME}/${CI_COMMIT_SHA}/net.nosial.optslib.ncc"
