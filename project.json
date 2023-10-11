@@ -30,7 +30,7 @@
             {
                 "name": "release",
                 "build_type": "ncc",
-                "output_path": "build/release/%ASSEMBLY.PACKAGE%.ncc"
+                "output": "build/release/%ASSEMBLY.PACKAGE%.ncc"
             }
         ]
     }
