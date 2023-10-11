@@ -10,12 +10,11 @@ A basic Options parser and command-line arguments handling a library for PHP.
   * [Installation](#installation)
   * [Compiling from source](#compiling-from-source)
   * [Usage](#usage)
-    * [parseArgument()](#parseargument--)
-    * [getArguments()](#getarguments--)
+    * [parseArgument()](#parseargument)
+    * [getArguments()](#getarguments)
   * [Additional functionality](#additional-functionality)
-    * [getRegex()](#getregex--)
-    * [setRegex()](#setregex--)
-    * [getArgsCache()](#getargscache--)
+    * [getRegex()](#getregex)
+    * [setRegex()](#setregex)
   * [Changelog](#changelog)
   * [License](#license)
   * [Logo](#logo)
@@ -37,7 +36,6 @@ the `build.dependencies` section:
 {
   "name": "net.nosial.optslib",
   "version": "latest",
-  "source_type": "remote",
   "source": "nosial/libs.opts=latest@n64"
 }
 ```
@@ -46,7 +44,7 @@ If you don't have the n64 source configured you can add it
 by running the following command:
 
 ```bash
-ncc source add --name n64 --type gitlab --host git.n64.cc
+ncc repository add --name n64 --type gitlab --host git.n64.cc
 ```
 
 ## Compiling from source
@@ -163,12 +161,6 @@ the arguments, you can modify the default pattern to suit your needs.
     
     \OptsLib\Parse::setRegex('/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/');
 ```
-
-
-### getArgsCache()
-
-This method is used to return the arguments cache parsed from the global
-`$argv` variable, this can be used as a means of troubleshooting.
 
 
 ## Changelog

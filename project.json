@@ -13,8 +13,7 @@
                 "host": "git.n64.cc",
                 "ssl": true
             }
-        },
-        "options": []
+        }
     },
     "assembly": {
         "name": "OptsLib",
@@ -31,10 +30,7 @@
             {
                 "name": "release",
                 "build_type": "ncc",
-                "options": {
-                    "compression": "high"
-                },
-                "output_path": "build/release"
+                "output_path": "build/release/%ASSEMBLY.PACKAGE%.ncc"
             }
         ]
     }
