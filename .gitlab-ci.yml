@@ -21,5 +21,5 @@ publish:
         - 'if [ "$CI_COMMIT_REF_NAME" == "master" ]; then PACKAGE_NAME="latest"; fi'
     script:
         - |
-            curl --header "PRIVATE-TOKEN: $CI_JOB_TOKEN" --upload-file build/release/net.nosial.optslib.ncc \
-              "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${PACKAGE_NAME}/${CI_COMMIT_SHA}/net.nosial.optslib.ncc"
+            curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build/release/net.nosial.optslib.ncc \
+              "$https://$CI_SERVER_HOST/api/v4/projects/$CI_PROJECT_ID/packages/generic/${PACKAGE_NAME}/${CI_COMMIT_SHA}/net.nosial.optslib.ncc"
