@@ -38,65 +38,67 @@
         /**
          * Parses the input arguments into an array of flags and values
          *
-         * @param array|string $input array The input arguments
+         * @param array|string|null $input array The input arguments
          * @param int $max_arguments The maximum number of arguments to parse
          * @return array The parsed arguments
          */
-        public static function parseArgument(array|string $input, int $max_arguments=1000): array
+        public static function parseArgument(array|string|null $input, int $max_arguments = 1000): array
         {
+            $flags = '';
+
             if (is_string($input))
             {
                 $flags = $input;
             }
-            elseif(is_array($input))
+            elseif (is_array($input))
             {
                 $flags = implode(' ', $input);
             }
             else
             {
                 global $argv;
-                if(isset($argv) && count($argv) > 1)
+                if (isset($argv) && count($argv) > 1)
                 {
                     array_shift($argv);
+                    $flags = implode(' ', $argv);
                 }
-                $flags = implode(' ',  $argv);
             }
 
-            $configs = array();
+            $configs = [];
+
+            // Assuming self::$regex is always defined and valid
             preg_match_all(self::$regex, $flags, $matches, PREG_SET_ORDER);
 
             foreach ($matches as $index => $match)
             {
-                if(isset($match['value']) && $match['value'] !== '')
+                $value = true;
+
+                if (!empty($match['value']))
                 {
                     $value = $match['value'];
                 }
-                elseif(isset($match['string']) && $match['string'] !== '')
+                elseif (!empty($match['string']))
                 {
                     // fix escaped quotes
                     $value = str_replace(["\\\"", "\\'"], ["\"", "'"], $match['string']);
                 }
-                else
-                {
-                    $value = true;
-                }
 
-                if(isset($match['bigflag']) && $match['bigflag'] !== '')
+                if (!empty($match['bigflag']))
                 {
                     $configs[$match['bigflag']] = $value;
                 }
 
-                if(isset($match['smallflag']) && $match['smallflag'] !== '')
+                if (!empty($match['smallflag']))
                 {
                     $configs[$match['smallflag']] = $value;
                 }
 
-                if(isset($match['unmatched']) && $match['unmatched'] !== '')
+                if (!empty($match['unmatched']))
                 {
                     $configs[$match['unmatched']] = true;
                 }
 
-                if($index >= ($max_arguments + 1))
+                if ($index >= $max_arguments)
                 {
                     break;
                 }
@@ -138,7 +140,6 @@
             }
 
             $after_index = array_search($after, array_keys(self::$args_cache), true);
-
             if($after_index === false)
             {
                 return [];
