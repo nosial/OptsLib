@@ -9,6 +9,7 @@ A basic Options parser and command-line arguments handling a library for PHP.
   * [Table of Contents](#table-of-contents)
   * [Installation](#installation)
   * [Compiling from source](#compiling-from-source)
+  * [Testing](#testing)
   * [Usage](#usage)
     * [parseArgument()](#parseargument)
     * [getArguments()](#getarguments)
