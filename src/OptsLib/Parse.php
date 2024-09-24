@@ -96,7 +96,7 @@
                     $configs[$match['unmatched']] = true;
                 }
 
-                if($index >= $max_arguments)
+                if($index >= ($max_arguments + 1))
                 {
                     break;
                 }
