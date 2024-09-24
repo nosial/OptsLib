@@ -31,9 +31,9 @@
         /**
          * Cache of the parsed arguments. This is used to prevent the arguments from being parsed more than once.
          *
-         * @var array
+         * @var array|null
          */
-        private static array $args_cache;
+        private static ?array $args_cache = null;
 
         /**
          * Parses the input arguments into an array of flags and values
