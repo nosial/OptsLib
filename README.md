@@ -26,7 +26,11 @@ A basic Options parser and command-line arguments handling a library for PHP.
 The library can be installed using ncc:
 
 ```bash
-ncc install -p "nosial/libs.opts=latest@n64"
+# n64
+ncc package install -p "nosial/libs.opts=latest@n64"
+
+# github
+ncc package install -p "nosial/libs.opts=latest@github"
 ```
 
 or by adding the following to your project.json file under
@@ -36,6 +40,7 @@ the `build.dependencies` section:
 {
   "name": "net.nosial.optslib",
   "version": "latest",
+  "source_type": "remote",
   "source": "nosial/libs.opts=latest@n64"
 }
 ```
@@ -60,6 +65,16 @@ or by running the following command:
 ```bash
 make release
 ```
+
+## Testing
+
+The library can be tested using PhpUnit with the `phpunit.xml` file that is already included in the repository.
+This requires that you have PhpUnit installed & the library has been compiled and installed on the local system.
+
+```bash
+phpunit
+```
+
 
 ## Usage
 
