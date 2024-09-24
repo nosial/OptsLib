@@ -26,23 +26,23 @@
          *
          * @var string
          */
-        private static $regex = "/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/";
+        private static string $regex = "/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/";
 
         /**
          * Cache of the parsed arguments. This is used to prevent the arguments from being parsed more than once.
          *
          * @var array
          */
-        private static $args_cache;
+        private static array $args_cache;
 
         /**
          * Parses the input arguments into an array of flags and values
          *
-         * @param string|array $input array The input arguments
+         * @param array|string $input array The input arguments
          * @param int $max_arguments The maximum number of arguments to parse
          * @return array The parsed arguments
          */
-        public static function parseArgument($input, int $max_arguments=1000): array
+        public static function parseArgument(array|string $input, int $max_arguments=1000): array
         {
             if (is_string($input))
             {
