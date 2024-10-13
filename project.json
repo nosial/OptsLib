@@ -2,8 +2,8 @@
     "project": {
         "compiler": {
             "extension": "php",
-            "minimum_version": "8.0",
-            "maximum_version": "8.2"
+            "minimum_version": "8.2",
+            "maximum_version": "8.0"
         },
         "update_source": {
             "source": "nosial/libs.opts@n64",
@@ -18,8 +18,8 @@
     "assembly": {
         "name": "OptsLib",
         "package": "net.nosial.optslib",
-        "copyright": "Copyright (c) 2022-2023 Nosial",
         "description": "A simple options parser library for PHP",
+        "copyright": "Copyright (c) 2022-2023 Nosial",
         "version": "1.1.0",
         "uuid": "20aefdfa-7b91-11ed-919f-cb63712c8e36"
     },
@@ -31,6 +31,14 @@
                 "name": "release",
                 "build_type": "ncc",
                 "output": "build/release/%ASSEMBLY.PACKAGE%.ncc"
+            },
+            {
+                "name": "release-executable",
+                "build_type": "executable",
+                "output": "build/release/release_executable_gz",
+                "options": {
+                    "ncc_configuration": "release"
+                }
             }
         ]
     }
