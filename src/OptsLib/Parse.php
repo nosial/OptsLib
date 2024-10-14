@@ -124,13 +124,10 @@
 
             if(self::$args_cache === null)
             {
+                self::$args_cache = [];
                 if(isset($argv))
                 {
                     self::$args_cache = self::parseArgument($argv);
-                }
-                else
-                {
-                    self::$args_cache = [];
                 }
             }
 
