@@ -117,7 +117,7 @@
         {
             global $argv;
 
-            if($argv === null)
+            if($argv === null && isset($_SERVER['argv']))
             {
                 $argv = $_SERVER['argv'];
             }
