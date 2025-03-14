@@ -2,10 +2,25 @@
 
 A basic Options parser and command-line arguments handling a library for PHP.
 
+## Community
+
+This project and many others from Nosial are available on multiple publicly available and free git repositories at
+
+- [n64](https://git.n64.cc/nosial/optslib)
+- [GitHub](https://github.com/nosial/optslib)
+- [Codeberg](https://codeberg.org/nosial/optslib)
+
+Issues & Pull Requests are frequently checked and to be referenced accordingly in commits and changes, Nosial remains
+dedicated to keep these repositories up to date when possible.
+
+For questions & discussions see the public Telegram community at [@NosialDiscussions](https://t.me/NosialDiscussions).
+We do encourage community support and discussions, please be respectful and follow the rules of the community.
+
 ## Table of Contents
 
 <!-- TOC -->
 * [OptsLib](#optslib)
+  * [Community](#community)
   * [Table of Contents](#table-of-contents)
   * [Installation](#installation)
   * [Compiling from source](#compiling-from-source)
