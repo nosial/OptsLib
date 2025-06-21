@@ -33,11 +33,27 @@
                 "output": "build/release/%ASSEMBLY.PACKAGE%.ncc"
             },
             {
+                "name": "debug",
+                "build_type": "ncc",
+                "output": "build/debug/%ASSEMBLY.PACKAGE%.ncc",
+                "define_constants": {
+                    "DEBUG": "1"
+                }
+            },
+            {
                 "name": "release-executable",
                 "build_type": "executable",
                 "output": "build/release/release_executable_gz",
                 "options": {
                     "ncc_configuration": "release"
+                }
+            },
+            {
+                "name": "debug-executable",
+                "build_type": "executable",
+                "output": "build/debug/release_executable_gz",
+                "options": {
+                    "ncc_configuration": "debug"
                 }
             }
         ]
