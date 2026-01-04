@@ -1,4 +1,4 @@
-build/
+target/
 /.idea/gbrowser_project.xml
 
 /.phpunit.result.cache

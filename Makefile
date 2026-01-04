@@ -1,25 +1,20 @@
-# Variables
-DEFAULT_CONFIGURATION ?= release
-LOG_LEVEL = debug
+all: target/release/net.nosial.optslib.ncc target/debug/net.nosial.optslib.ncc
+target/release/net.nosial.optslib.ncc:
+	ncc build --configuration release --log-level debug
+target/debug/net.nosial.optslib.ncc:
+	ncc build --configuration debug --log-level debug
 
-# Default Target
-all: release release-executable
-
-# Build Steps
-release:
-	ncc build --config=release --log-level $(LOG_LEVEL)
-release-executable:
-	ncc build --config=release-executable --log-level $(LOG_LEVEL)
+test:
+	phpunit --configuration phpunit.xml
 
 
-install: release
-	ncc package install --package=build/release/net.nosial.optslib.ncc --skip-dependencies --build-source --reinstall -y --log-level $(LOG_LEVEL)
-
-test: release
-	[ -f phpunit.xml ] || { echo "phpunit.xml not found"; exit 1; }
-	phpunit
+docs:
+	phpdoc --config phpdoc.dist.xml
 
 clean:
-	rm -rf build
+	rm target/release/net.nosial.optslib.ncc
+	rm target/debug/net.nosial.optslib.ncc
+	rm target/docs
+	rm target/cache
 
-.PHONY: all install test clean release release-executable
+.PHONY: all install clean test docs
