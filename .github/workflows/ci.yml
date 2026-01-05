@@ -164,12 +164,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: release
-          path: release
-
       - name: Install dependencies
         run: |
           apt update -yqq
@@ -190,14 +184,17 @@ jobs:
 
       - name: Install ncc packages
         run: |
-          ncc install --package="$GITHUB_WORKSPACE/release/net.nosial.optslib.ncc" -y --log-level debug
+          ncc project install
+          ncc build --config=release --log-level debug
+
+      - name: Create reports directory
+        run: mkdir -p reports
+
+      - name: Download PHPUnit
+        run: wget https://phar.phpunit.de/phpunit-11.3.phar
 
       - name: Run PHPUnit tests
-        run: |
-          export NCC_BUILD_OUTPUT_PATH="$GITHUB_WORKSPACE/release/net.nosial.optslib.ncc"
-          mkdir -p reports
-          wget https://phar.phpunit.de/phpunit-11.3.phar
-          php phpunit-11.3.phar --configuration phpunit.xml --log-junit reports/junit.xml --log-teamcity reports/teamcity --testdox-html reports/testdox.html --testdox-text reports/testdox.txt
+        run: php phpunit-11.3.phar --configuration phpunit.xml --log-junit reports/junit.xml --log-teamcity reports/teamcity --testdox-html reports/testdox.html --testdox-text reports/testdox.txt
 
       - name: Upload test reports
         uses: actions/upload-artifact@v4
