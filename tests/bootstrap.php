@@ -1,9 +1,15 @@
 <?PHP
         require 'ncc';
 
-        if(!file_exists(__DIR__ . DIRECTORY_SEPARATOR . '../target/release/net.nosial.optslib.ncc'))
+        $buildOutputPath = __DIR__ . DIRECTORY_SEPARATOR . '../target/release/net.nosial.optslib.ncc';
+        if(getenv('NCC_BUILD_OUTPUT_PATH'))
         {
-            throw new Exception('Build output not found: ' . __DIR__ . DIRECTORY_SEPARATOR . '../target/release/net.nosial.optslib.ncc');
+            $buildOutputPath = getenv('NCC_BUILD_OUTPUT_PATH');
+        }
+
+        if(!file_exists($buildOutputPath))
+        {
+            throw new Exception('Build output not found: ' . $buildOutputPath);
         }
 
         import(__DIR__ . DIRECTORY_SEPARATOR . '../target/release/net.nosial.optslib.ncc');
