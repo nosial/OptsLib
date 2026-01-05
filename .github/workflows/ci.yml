@@ -190,7 +190,7 @@ jobs:
 
       - name: Install ncc packages
         run: |
-          ncc install --package="release/net.nosial.optslib.ncc" -y --log-level debug
+          ncc install --package="$GITHUB_WORKSPACE/release/net.nosial.optslib.ncc" -y --log-level debug
 
       - name: Run PHPUnit tests
         run: |
