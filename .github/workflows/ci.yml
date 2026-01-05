@@ -195,6 +195,7 @@ jobs:
       - name: Run PHPUnit tests
         run: |
           export NCC_BUILD_OUTPUT_PATH="$GITHUB_WORKSPACE/release/net.nosial.optslib.ncc"
+          mkdir -p reports
           wget https://phar.phpunit.de/phpunit-11.3.phar
           php phpunit-11.3.phar --configuration phpunit.xml --log-junit reports/junit.xml --log-teamcity reports/teamcity --testdox-html reports/testdox.html --testdox-text reports/testdox.txt
 
