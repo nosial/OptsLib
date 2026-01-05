@@ -43,22 +43,18 @@ The library can be installed using ncc:
 
 ```bash
 # n64
-ncc package install -p "nosial/libs.opts=latest@n64"
+ncc install --package="nosial/optslib=latest@n64"
 
 # github
-ncc package install -p "nosial/libs.opts=latest@github"
+ncc install --package="nosial/optslib=latest@github"
 ```
 
 or by adding the following to your project.json file under
 the `build.dependencies` section:
 
-```json
-{
-  "name": "net.nosial.optslib",
-  "version": "latest",
-  "source_type": "remote",
-  "source": "nosial/libs.opts=latest@n64"
-}
+```yaml
+dependencies:
+    net.nosial.optslib: nosial/optslib=latest@n64
 ```
 
 If you don't have the n64 source configured you can add it
