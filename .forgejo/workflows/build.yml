@@ -43,6 +43,7 @@ jobs:
         run: |
           git clone https://git.n64.cc/nosial/ncc.git
           cd ncc
+          git checkout dev
           make redist
           NCC_DIR=$(find build/ -type d -name "ncc_*" | head -n 1)
           if [ -z "$NCC_DIR" ]; then
@@ -153,6 +154,7 @@ jobs:
         run: |
           git clone https://git.n64.cc/nosial/ncc.git
           cd ncc
+          git checkout dev
           make redist
           NCC_DIR=$(find build/ -type d -name "ncc_*" | head -n 1)
           if [ -z "$NCC_DIR" ]; then
