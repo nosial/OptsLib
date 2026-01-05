@@ -187,14 +187,14 @@ jobs:
           ncc project install
           ncc build --config=release --log-level debug
 
-      - name: Create reports directory
-        run: mkdir -p reports
-
       - name: Download PHPUnit
         run: wget https://phar.phpunit.de/phpunit-11.3.phar
 
       - name: Run PHPUnit tests
-        run: php phpunit-11.3.phar --configuration phpunit.xml --log-junit reports/junit.xml --log-teamcity reports/teamcity --testdox-html reports/testdox.html --testdox-text reports/testdox.txt
+        run: |
+          mkdir -p "$PWD/reports"
+          chmod 777 "$PWD/reports"
+          php phpunit-11.3.phar --configuration phpunit.xml --log-junit "$PWD/reports/junit.xml" --log-teamcity "$PWD/reports/teamcity" --testdox-html "$PWD/reports/testdox.html" --testdox-text "$PWD/reports/testdox.txt"
 
       - name: Upload test reports
         uses: actions/upload-artifact@v4
