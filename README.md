@@ -1,4 +1,4 @@
-# OptsLib
+# <picture><source media="(prefers-color-scheme: dark)" srcset="assets/icon/optslib_light.svg"><img src="assets/icon/optslib_dark.svg" alt="OptsLib" width="32" height="32"></picture> OptsLib
 
 A basic Options parser and command-line arguments handling a library for PHP.
 
@@ -49,19 +49,19 @@ ncc install --package="nosial/optslib=latest@n64"
 ncc install --package="nosial/optslib=latest@github"
 ```
 
-or by adding the following to your project.json file under
-the `build.dependencies` section:
+or by adding the following to your project.yml file under
+the `dependencies` section:
 
 ```yaml
 dependencies:
     net.nosial.optslib: nosial/optslib=latest@n64
 ```
 
-If you don't have the n64 source configured you can add it
-by running the following command:
+The `n64` repository is configured by ncc's installer. If it
+is missing, you can add it by running the following command:
 
 ```bash
-ncc repository add --name n64 --type gitlab --host git.n64.cc
+ncc repository add --name n64 --type github --host git.n64.cc
 ```
 
 ## Compiling from source
@@ -69,13 +69,13 @@ ncc repository add --name n64 --type gitlab --host git.n64.cc
 The library can be compiled from source using ncc:
 
 ```bash
-ncc build --config release
+ncc build --configuration release
 ```
 
 or by running the following command:
 
 ```bash
-make release
+make target/release/net.nosial.optslib.ncc
 ```
 
 ## Testing
@@ -103,7 +103,7 @@ of arguments that can be parsed, this is to prevent infinite loops.
 <?php
 
     require_once('ncc');
-    import('net.nosial.optslib', 'latest');
+    import('net.nosial.optslib');
     
     $input = '--foo --bar="test" -y --username test';
     $parsed = \OptsLib\Parse::parseArgument($input);
@@ -123,7 +123,7 @@ if it's not set, an empty array is returned.
 <?php
 
     require_once('ncc');
-    import('net.nosial.optslib', 'latest');
+    import('net.nosial.optslib');
     
     $arguments = \OptsLib\Parse::getArguments();
     
@@ -149,7 +149,7 @@ In this case, you can pass the `subcommand` argument to the
 <?php
 
     require_once('ncc');
-    import('net.nosial.optslib', 'latest');
+    import('net.nosial.optslib');
     
     $arguments = \OptsLib\Parse::getArguments('subcommand');
     
@@ -184,7 +184,7 @@ the arguments, you can modify the default pattern to suit your needs.
 <?php
 
     require_once('ncc');
-    import('net.nosial.optslib', 'latest');
+    import('net.nosial.optslib');
     
     \OptsLib\Parse::setRegex('/(?(?=-)-(?(?=-)-(?'bigflag'[^\\s=]+)|(?'smallflag'\\S))(?:\\s*=\\s*|\\s+)(?(?!-)(?(?=[\\\"\\'])((?<![\\\\])['\"])(?'string'(?:.(?!(?<![\\\\])\\3))*.?)\\3|(?'value'\\S+)))(?:\\s+)?|(?'unmatched'\\S+))/');
 ```

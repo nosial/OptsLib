@@ -1,6 +1,6 @@
 source: src
 default_build: release
-update_source: nosial/libs.opts@n64
+update_source: nosial/optslib@n64
 repository:
   name: n64
   type: github
@@ -9,8 +9,13 @@ repository:
 assembly:
   name: OptsLib
   package: net.nosial.optslib
-  version: 1.1.4
+  version: 1.1.5
+  url: 'https://github.com/nosial/OptsLib'
+  license: 'MIT'
   description: 'A simple options parser library for PHP'
+  author: 'Netkas <netkas@nosial.net>'
+  organization: 'Nosial'
+  product: 'Libraries'
   copyright: 'Copyright (c) 2022-2026 Nosial'
 build_configurations:
   -
