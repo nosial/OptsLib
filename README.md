@@ -19,7 +19,7 @@ We do encourage community support and discussions, please be respectful and foll
 ## Table of Contents
 
 <!-- TOC -->
-* [OptsLib](#optslib)
+* [<picture><source media="(prefers-color-scheme: dark)" srcset="assets/icon/optslib_light.svg"><img src="assets/icon/optslib_dark.svg" alt="OptsLib" width="32" height="32"></picture> OptsLib](#picturesource-mediaprefers-color-scheme-dark-srcsetassetsiconoptslib_lightsvgimg-srcassetsiconoptslib_darksvg-altoptslib-width32-height32picture-optslib)
   * [Community](#community)
   * [Table of Contents](#table-of-contents)
   * [Installation](#installation)
