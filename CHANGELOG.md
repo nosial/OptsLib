@@ -13,7 +13,9 @@ This update brings the project up to date with ncc 3.1.11
  - Updated the project to use ncc 3.1.11, the assembly now includes the url, license, author,
    organization, product and copyright information
  - Added the project's icon to the README
-
+ - Updated GitHub Actions and Forgejo CI containers from PHP 8.3 to PHP 8.5 so
+   installation of current ncc succeeds instead of failing its PHP 8.4.1 minimum
+   requirement.
 
 
 ## [1.1.4] - 2025-01-05
